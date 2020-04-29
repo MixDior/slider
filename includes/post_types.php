@@ -10,15 +10,18 @@ function create_post_type() {
         array(
             'labels' => array(
                 'name' => __( 'Слайдер',__NAMESPACE__ ),
-                'singular_name' => __( 'Слайдер-' )
+                'singular_name' => __( 'Слайдер-', __NAMESPACE__ )
             ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'movies'),
-            'show_in_rest' => true,
+	        'arhives'=>false,
+	        'supports'=>array(
+	        	'title','editor','thumbnail',
+	        )
+
 
         )
     );
 }
 // Hooking up our function to theme setup
-add_action( 'init', __NAMESPACE__.'/create_posttype' );
+add_action( 'init', __NAMESPACE__.'\create_post_type' );
