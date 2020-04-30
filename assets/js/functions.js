@@ -6,5 +6,11 @@ function slider() {
 }
 
     slider();
+$('.js-slider-dot').on('click',function (event) {
+   // let element = this.target;
+    let index = $(this).attr('data-index');
+    console.log(index);
+
+});
 
 }(jQuery));

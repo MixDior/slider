@@ -85,17 +85,43 @@ function get_slider(){
 		}
 
 		$slider=array();
-	foreach ( $slides->posts as $slide ) {
+	foreach ( $slides->posts as $i=>$slide ) {
 		$slide = (array)$slide;
+		/*echo '<pre>';
+		print_r($slide);
+		echo '</pre>';*/
 
 		$post_id=$slide['ID'];
-		$slide['url']=get_the_post_thumbnail_url($post_id,'full');
+		$slide['url']=get_the_post_thumbnail_url($post_id,'post-thumbnail');
+
+		if(0==$i){
+			$slide['active']='active';
+		}else{
+			$slide['active']='';
+		}
 
 		$slider[]=get_template('slide', $slide);
 
 		}
 
-	$slider='<ul class="slider js-slider">'.implode('',$slider).'</ul>';
+	$slides_count=sizeof($slider);
+
+	$slider=array('items'=>implode('',$slider));
+	$slider['dots']='';
+	echo '<pre>';
+	print_r($slider);
+	echo '</pre>';
+	for ($i=0; $i<$slides_count;$i++){
+		if(0==$i){
+			$active='active';
+		}else{
+			$active='';
+		}
+
+		$slider['dots'].='<li class="slider__dot '.$active.' js-slider-dot" data-index="'.$i.'"></li>';
+	}
+	$slider=get_template('slider', $slider);
+	//$slider='<ul class="slider js-slider">'.implode('',$slider).'</ul>';
 
 	return $slider;
 

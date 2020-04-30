@@ -1,7 +1,12 @@
 .slider{
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  position: relative;
+
+  &__slides{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
   &__item {
 
     background-color: #eee;
@@ -10,6 +15,11 @@
     background-size: cover;
     position: relative;
     padding-top: 57.6%;
+    display: none;
+  }
+
+  &__item.active{
+    display: block;
   }
 &__header{
   color: #fff;
@@ -24,4 +34,35 @@
     padding: 15px;
 
   }
+
+  &__dot{
+    background-color: transparent;
+    border-radius: 50%;
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 0 10px 10px 0;
+    cursor: pointer;
+    border: 1px solid #fff;
+    float: left;
+  }
+&__dots{
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  display: table;
+  margin-top: -20px;
+  z-index: 1;
+  position: relative;
+
+  &:before,&:after{
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+&__dot.active{
+  background-color: #fff;
+
+}
 }
