@@ -3,6 +3,7 @@
 
 namespace slider;
 // Our custom post type function
+
 function create_post_type() {
 
     register_post_type( 'slide',
